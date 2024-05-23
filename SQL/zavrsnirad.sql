@@ -42,3 +42,10 @@ cijena decimal(18,2) not null
 alter table nabava add foreign key (dobavljac) references dobavljaci(sifra);
 alter table stavka add foreign key (sifranabave) references nabava(sifra);
 alter table stavka add foreign key (sifraartikla) references artikl(sifra);
+
+-- INSERT NAREDBE
+--select * from dobavljaci;
+insert into dobavljaci (naziv, grad, mjesto, oib)values
+('Bijelic.doo','Osijek','Sv.Roka1',96752332364),
+('Atlantic.doo','Osijek','M.Gupca1',48037484195),
+('Roto.doo','Osijek','Gunduliceva1',82770989192);
