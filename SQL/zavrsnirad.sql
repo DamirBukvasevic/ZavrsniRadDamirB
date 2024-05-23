@@ -1,4 +1,4 @@
-use master;
+﻿use master;
 go
 drop database if exists zavrsnirad;
 go
@@ -25,7 +25,7 @@ dobavljac int not null
 
 
 create table stavka(
-sifranabave int not null primary key identity(1,1),
+sifranabave int not null,
 sifraartikla int not null,
 kolicinaartikla int not null,
 cijena decimal(18,2) not null
@@ -35,10 +35,10 @@ cijena decimal(18,2) not null
 create table artikl(
 sifra int not null primary key identity(1,1),
 nazivartikla varchar(50) not null,
-kolicina int not null
+cijena decimal(18,2) not null
 );
 
 
 alter table nabava add foreign key (dobavljac) references dobavljaci(sifra);
-alter table stavka add foreign key (sifraartikla) references nabava(sifra);
-alter table stavka add foreign key (kolicinaartikla) references artikl(sifra);
+alter table stavka add foreign key (sifranabave) references nabava(sifra);
+alter table stavka add foreign key (sifraartikla) references artikl(sifra);
