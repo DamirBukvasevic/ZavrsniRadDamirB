@@ -1,4 +1,4 @@
-﻿use master;
+use master;
 go
 drop database if exists ZavrsniRad;
 go
@@ -16,7 +16,7 @@ Oib char(11) not null
 );
 
 
-create table Nabava(
+create table Nabave(
 Sifra int not null primary key identity(1,1),
 Broj_nabave int not null,
 Datum_nabave datetime not null,
@@ -24,7 +24,7 @@ Dobavljac int not null
 );
 
 
-create table Stavka(
+create table Stavke(
 Sifra_nabave int not null,
 Sifra_artikla int not null,
 Kolicina_artikla int not null,
@@ -32,16 +32,16 @@ Cijena decimal(18,2) not null
 );
 
 
-create table Artikl(
+create table Artikli(
 Sifra int not null primary key identity(1,1),
 Naziv_artikla varchar(50) not null,
 Cijena decimal(18,2) not null
 );
 
 
-alter table Nabava add foreign key (Dobavljac) references Dobavljaci(Sifra);
-alter table Stavka add foreign key (Sifra_nabave) references Nabava(Sifra);
-alter table Stavka add foreign key (Sifra_artikla) references Artikl(Sifra);
+alter table Nabave add foreign key (Dobavljac) references Dobavljaci(Sifra);
+alter table Stavke add foreign key (Sifra_nabave) references Nabave(Sifra);
+alter table Stavke add foreign key (Sifra_artikla) references Artikli(Sifra);
 
 -- INSERT NAREDBE
 
@@ -51,8 +51,8 @@ insert into Dobavljaci (Naziv, Grad, Adresa, Oib)values
 ('Atlantic.doo','Osijek','M.Gupca1',48037484195),
 ('Roto.doo','Osijek','Gunduliceva1',82770989192);
 
---select * from artikl;
-insert into Artikl (Naziv_artikla, Cijena)values
+--select * from artikli;
+insert into Artikli (Naziv_artikla, Cijena)values
 ('Coca-Cola 0.25 l', 01.27),
 ('Coca-ColaZero 0.25 l', 01.27),
 ('Fanta 0.25 l', 01.19),
